@@ -48,7 +48,7 @@ class Character:
 
 class CUIGame:
     draw_text(29, "BGM. 彼岸帰航　～ Riverside View", "right")
-    playsound("sounds/bg/higan.mp3", block=False)
+    playsound("sounds/bg/test/higan.mp3", block=False)
 
 
 frame = CUIGame()
