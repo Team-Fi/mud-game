@@ -1,17 +1,19 @@
 import py_cui
 import time
 import os
+from playsound import playsound
 
 p = py_cui.PyCUI(1, 1)
 g = p.add_text_block("", 0, 0, initial_text="")
 t = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
      ""]
 
+
 def ref_not_input():
     print("\n" + "\n".join(t), end="")
 
 
-def draw_text(row, text, align = "left"):
+def draw_text(row, text, align="left"):
     g = 0
     for i in list(text):
         if ord(i) > 127:
@@ -19,7 +21,7 @@ def draw_text(row, text, align = "left"):
         else:
             g += 1
     if align == "right":
-       t[row] = f'{" " * (120 - g)}{text}'
+        t[row] = f'{" " * (120 - g)}{text}'
     else:
         t[row] = text
     ref_not_input()
@@ -32,7 +34,8 @@ def refresh():
 
 class Character:
     texts = dict()
-    def __init__(self, name, disp_name, picture = None):
+
+    def __init__(self, name, disp_name, picture=None):
         global texts
 
         self.name = name
@@ -44,7 +47,8 @@ class Character:
 
 
 class CUIGame:
-    draw_text(29, "BGM. 輝かしき弱肉強食の掟", "right")
+    draw_text(29, "BGM. 彼岸帰航　～ Riverside View", "right")
+    playsound("sounds/bg/higan.mp3", block=False)
 
 
 frame = CUIGame()
@@ -52,8 +56,8 @@ frame = CUIGame()
 refresh()
 draw_text(28, "이름을 입력해주세요: ", "left")
 player = Character(name="AlphaGot", disp_name=refresh())
-draw_text(22, "-"*120)
-draw_text(28, "-"*120)
+draw_text(22, "-" * 120)
+draw_text(28, "-" * 120)
 draw_text(23, player.disp_name + "의 말: ")
 draw_text(24, "  " + player.texts["start_01"][0])
 refresh()
