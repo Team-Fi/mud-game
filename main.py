@@ -1,10 +1,8 @@
-import py_cui
 import time
 import os
 from playsound import playsound
+import random
 
-p = py_cui.PyCUI(1, 1)
-g = p.add_text_block("", 0, 0, initial_text="")
 t = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
      ""]
 
@@ -46,14 +44,8 @@ class Character:
                 self.texts[i.split(".")[0]] = f.readlines()
 
 
-class CUIGame:
-    draw_text(29, "BGM. 彼岸帰航　～ Riverside View", "right")
-    playsound("sounds/bg/test/higan.mp3", block=False)
-
-
-frame = CUIGame()
-
-refresh()
+draw_text(29, "BGM. 彼岸帰航　～ Riverside View", "right")
+playsound(os.path.abspath(f"sounds/bg/test/{random.randint(1, 19)}.mp3"), block=False)
 draw_text(28, "이름을 입력해주세요: ", "left")
 player = Character(name="AlphaGot", disp_name=refresh())
 draw_text(22, "-" * 120)
